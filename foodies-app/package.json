@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@types/better-sqlite3": "^7.6.8",
+    "@types/react-dom": "^18.2.18",
     "better-sqlite3": "^9.2.2",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "slugify": "^1.6.6",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "@types/node": "20.11.0",

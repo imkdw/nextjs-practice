@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useRef, useState } from "react";
 import classes from "./image-picker.module.css";
+import Image from "next/image";
 
 interface Props {
   label: string;
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export default function ImagePicker({ label, name }: Props) {
-  const [pickedImage, setPickedImage] = useState();
+  const [pickedImage, setPickedImage] = useState<string | ArrayBuffer | null>(null);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   const handlePickClick = () => {
@@ -36,7 +37,10 @@ export default function ImagePicker({ label, name }: Props) {
   return (
     <div className={classes.picker}>
       <label htmlFor={name}>{label}</label>
-      <div className={classes.preview}></div>
+      <div className={classes.preview}>
+        {pickedImage && <Image src={pickedImage.toString()} alt="Picked" fill />}
+        {!pickedImage && <p>Please pick an image.</p>}
+      </div>
       <div className={classes.controls}>
         <input
           type="file"
