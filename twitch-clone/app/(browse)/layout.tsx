@@ -1,5 +1,6 @@
-import { Sidebar } from "lucide-react";
+import Container from "./_components/container";
 import Navbar from "./_components/navbar";
+import Sidebar from "./_components/sidebar";
 
 interface Props {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ export default function BrowseLayout({ children }: Props) {
       <Navbar />
       <div className="flex h-full pt-20">
         <Sidebar />
-        {children}
+        <Container>{children}</Container>
       </div>
     </>
   );
