@@ -1,3 +1,4 @@
+import { Sidebar } from "lucide-react";
 import Navbar from "./_components/navbar";
 
 interface Props {
@@ -6,9 +7,12 @@ interface Props {
 
 export default function BrowseLayout({ children }: Props) {
   return (
-    <div className="flex h-full pt-20">
+    <>
       <Navbar />
-      {children}
-    </div>
+      <div className="flex h-full pt-20">
+        <Sidebar />
+        {children}
+      </div>
+    </>
   );
 }
