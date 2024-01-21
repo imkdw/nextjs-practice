@@ -17,6 +17,7 @@ export async function getRecommended() {
     users = await db.user.findMany({
       where: {
         AND: [
+          // 자기 자신은 추천목록에서 제외
           {
             NOT: {
               id: userId,
@@ -28,6 +29,16 @@ export async function getRecommended() {
               followedBy: {
                 some: {
                   followerId: userId,
+                },
+              },
+            },
+          },
+          // 차단한 유저는 추천목록에서 제외
+          {
+            NOT: {
+              blockedBy: {
+                some: {
+                  blockerId: userId,
                 },
               },
             },
